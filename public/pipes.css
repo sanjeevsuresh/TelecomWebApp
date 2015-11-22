@@ -1,0 +1,87 @@
+@font-face {
+    font-family: EBGaramond;
+    src: url(fonts/eb-garamond/EBGaramond12-Regular.ttf);
+}
+@font-face {
+    font-family: Martel;
+    src: url(fonts/Martel/Martel-DemiBold.ttf);
+}
+
+#title , #subtitle {
+	font-family: Martel;
+	text-align: center;
+}
+#pipe {
+	border-top: black;
+	border-bottom: black;
+	border: 2px;
+	height: 500px;
+
+			position:relative;
+			overflow:hidden; 
+			-webkit-transform:translate3d(0,0,0);
+			-moz-transform:translate3d(0,0,0);
+			-o-transform:translate3d(0,0,0)
+		
+}
+
+		.clouds_one {
+			background: url("cloud_one.png");
+/*			background: url("media_militia_particles/Media_Militia_Particles019.png");
+*/			position:absolute;
+			left:0;
+			top:0;
+			height:100%;
+			width:300%;
+			-webkit-animation:cloud_one 50s linear infinite;
+			-moz-animation:cloud_one 50s linear infinite;
+			-o-animation:cloud_one 50s linear infinite;
+			-webkit-transform:translate3d(0,0,0);
+			-moz-transform:translate3d(0,0,0);
+			-o-transform:translate3d(0,0,0)
+		}
+@-webkit-keyframes cloud_one {
+			0% {
+				left:0
+			}
+		
+			100% {
+				left:-200%
+			}
+		}
+@-webkit-keyframes square-to-circle {
+  0%  {
+    border-radius:0 0 0 0;
+    background-color: black;
+    transform: rotate(0deg);
+  }
+  25%  {
+    border-radius:50% 0 0 0;
+    background-color: blue;
+    transform: rotate(45deg);
+  }
+  50%  {
+    border-radius:50% 50% 0 0;
+    background-color: green;
+    transform: rotate(90deg);
+  }
+  75%  {
+    border-radius:50% 50% 50% 0;
+    background-color: red;
+    transform: rotate(135deg);
+  }
+  100% {
+    border-radius:50%;
+    background-color: yellow;
+    transform: rotate(180deg);
+  }
+}
+
+.element {
+  animation-name: tutsFade;
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+}
