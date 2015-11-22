@@ -27,13 +27,13 @@
 
 		.clouds_one {
 /*			background: url("cloud_one.png");
-*/			background: url("media_militia_particles/Media_Militia_Particles019.png");
+*/			background: url("media_militia_particles/Media_Militia_Particles001.png");
 			position:absolute;
 			left:0;
 			top:0;
 			height:100%;
 			width:300%;
-			-webkit-animation:cloud_one 50s linear infinite;
+			-webkit-animation:cloud_one 25s linear infinite;
 			-moz-animation:cloud_one 50s linear infinite;
 			-o-animation:cloud_one 50s linear infinite;
 			-webkit-transform:translate3d(0,0,0);
