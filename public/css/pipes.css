@@ -26,9 +26,9 @@
 }
 
 		.clouds_one {
-/*			background: url("cloud_one.png");
-*/			background: url("media_militia_particles/Media_Militia_Particles019.png");
-			position:absolute;
+			background: url("cloud_one.png");
+/*			background: url("media_militia_particles/Media_Militia_Particles019.png");
+*/			position:absolute;
 			left:0;
 			top:0;
 			height:100%;
