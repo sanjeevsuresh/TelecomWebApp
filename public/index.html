@@ -9,18 +9,137 @@
   <body>
     <div id="map"></div>
     <script type="text/javascript">
-
     var map;
+    var markers = [
+    	{
+	        lat: 17.714998, 
+	        lng: 83.199853,
+	        disaster: 2
+      	},
+      	{
+	        lat: 17.7271392,
+	        lng: 83.2043805,
+	        disaster: 1
+   		},
+   		{
+   			lat: 17.6853727,
+   			lng: 83.2446354,
+	        disaster: 3
+      	},
+      	{
+      		lat: 17.6798709,
+      		lng: 83.2425686,
+        	disaster: 4
+   		}
+  	];
+  	console.log(markers)
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 37.866704, lng: -122.26241900000002},
-        zoom: 17
+        center: {lat: 17.6883, lng: 83.2186},
+        zoom: 13
       });
-      var marker = new google.maps.Marker({
-        position: {lat: 37.866704, lng: -122.26241900000002},
-        map: map,
-        title: 'Hello World!'
-      });
+      var fireIcon = {
+	    url: "Heat.png", // url
+	    scaledSize: new google.maps.Size(50, 50), // scaled size
+	    origin: new google.maps.Point(0,0), // origin
+	    anchor: new google.maps.Point(0, 0) // anchor
+	  };
+	  var medicIcon = {
+	    url: "test1.png", // url
+	    scaledSize: new google.maps.Size(50, 50), // scaled size
+	    origin: new google.maps.Point(0,0), // origin
+	    anchor: new google.maps.Point(0, 0) // anchor
+	  };
+	  var foodIcon = {
+	    url: "test2.png", // url
+	    scaledSize: new google.maps.Size(50, 50), // scaled size
+	    origin: new google.maps.Point(0,0), // origin
+	    anchor: new google.maps.Point(0, 0) // anchor
+	  };
+	  var floodIcon = {
+	    url: "test3.png", // url
+	    scaledSize: new google.maps.Size(50, 50), // scaled size
+	    origin: new google.maps.Point(0,0), // origin
+	    anchor: new google.maps.Point(0, 0) // anchor
+	  };
+
+	 var fireString = '<div>'+
+      '<h1>FIRE!</h1>'+
+      '</div>';
+     var floodString = '<div>'+
+      '<h1>Flood!</h1>'+
+      '</div>';
+     var foodString = '<div>'+
+      '<h1>Need Food!</h1>'+
+      '</div>';
+     var medicString = '<div>'+
+      '<h1>Need Medic!</h1>'+
+      '</div>';
+
+      for (i = 0; i < markers.length; i++) {
+      	var markerJSON = markers[i];
+      	console.log(markerJSON);
+      	if (markerJSON.disaster == 1) {
+      		var marker = new google.maps.Marker({
+	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
+	      		map: map,
+	      		icon: fireIcon
+      		})
+      		var infowindow = new google.maps.InfoWindow({
+      			content: fireString
+      		})
+      	}
+      	else if (markerJSON.disaster == 2) {
+      		var marker = new google.maps.Marker({
+	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
+	      		map: map,
+	      		icon: floodIcon
+      		})
+      		var infowindow = new google.maps.InfoWindow({
+      			content: floodString
+      		})
+      	}
+      	else if (marker.JSON.disaster == 3) {
+      		var marker = new google.maps.Marker({
+	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
+	      		map: map,
+	      		icon: foodIcon
+      		})
+      		var infowindow = new google.maps.InfoWindow({
+      			content: foodString
+      		})
+      	}
+      	else if (marker.JSON.disaster == 4) {
+      		var marker = new google.maps.Marker({
+	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
+	      		map: map,
+	      		icon: medicIcon
+      		})
+      		var infowindow = new google.maps.InfoWindow({
+      			content: medicString
+      		})
+      	}
+      	marker.addListener('click', function() {
+		    map.setCenter(marker.getPosition());
+		    infowindow.open(map, marker);
+		});
+      }
+
+   //    var infowindow = new google.maps.InfoWindow({
+	  //   content: floodString
+	  // });
+
+
+   //    var marker = new google.maps.Marker({
+   //      position: {lat: 17.6883, lng: 83.2186},
+   //      map: map,
+   //      title: 'Hello World!',
+   //      icon: fireIcon
+   //    });
+   //    marker.addListener('click', function() {
+	  //   map.setCenter(marker.getPosition());
+	  //   infowindow.open(map, marker);
+	  // });
     }
 
   </script>
