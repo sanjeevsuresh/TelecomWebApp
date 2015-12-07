@@ -24,12 +24,12 @@
    		{
    			lat: 17.6853727,
    			lng: 83.2446354,
-	        disaster: 3
+	        disaster: 4
       	},
       	{
       		lat: 17.6798709,
       		lng: 83.2425686,
-        	disaster: 4
+        	disaster: 3
    		}
   	];
   	console.log(markers)
@@ -77,69 +77,46 @@
       '</div>';
 
       for (i = 0; i < markers.length; i++) {
-      	var markerJSON = markers[i];
-      	console.log(markerJSON);
-      	if (markerJSON.disaster == 1) {
-      		var marker = new google.maps.Marker({
-	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
-	      		map: map,
-	      		icon: fireIcon
-      		})
-      		var infowindow = new google.maps.InfoWindow({
-      			content: fireString
-      		})
-      	}
-      	else if (markerJSON.disaster == 2) {
-      		var marker = new google.maps.Marker({
-	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
-	      		map: map,
-	      		icon: floodIcon
-      		})
-      		var infowindow = new google.maps.InfoWindow({
-      			content: floodString
-      		})
-      	}
-      	else if (marker.JSON.disaster == 3) {
-      		var marker = new google.maps.Marker({
-	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
-	      		map: map,
-	      		icon: foodIcon
-      		})
-      		var infowindow = new google.maps.InfoWindow({
-      			content: foodString
-      		})
-      	}
-      	else if (marker.JSON.disaster == 4) {
-      		var marker = new google.maps.Marker({
-	      		position: {lat: markerJSON.lat, lng: markerJSON.lng},
-	      		map: map,
-	      		icon: medicIcon
-      		})
-      		var infowindow = new google.maps.InfoWindow({
-      			content: medicString
-      		})
-      	}
-      	marker.addListener('click', function() {
-		    map.setCenter(marker.getPosition());
-		    infowindow.open(map, marker);
-		});
+        (function() {
+        	var markerJSON = markers[i];
+          var marker = new google.maps.Marker({
+            map: map,
+            position: {lat: markerJSON.lat, lng: markerJSON.lng},
+          })
+          // Disaster 1: Fire
+          // Disaster 2: Flood
+          // Disaster 3: Food & Water
+          // Disaster 4: Medical Attention
+        	if (markerJSON.disaster == 1) {
+            marker.setIcon(fireIcon);
+        		marker.info = new google.maps.InfoWindow({
+              content: fireString
+            })
+        	}
+        	else if (markerJSON.disaster == 2) {
+            marker.setIcon(floodIcon);
+        		marker.info = new google.maps.InfoWindow({
+        			content: floodString
+        		})
+        	}
+        	else if (markerJSON.disaster == 3) {
+            marker.setIcon(foodIcon);
+        		marker.info = new google.maps.InfoWindow({
+        			content: foodString
+        		})
+        	}
+        	else if (markerJSON.disaster == 4) {
+            marker.setIcon(medicIcon);
+        		marker.info = new google.maps.InfoWindow({
+        			content: medicString
+        		})
+        	}
+        	marker.addListener('click', function() {
+      		    map.setCenter(marker.getPosition());
+      		    marker.info.open(map, marker);
+      		}, false);
+        }())
       }
-
-   //    var infowindow = new google.maps.InfoWindow({
-	  //   content: floodString
-	  // });
-
-
-   //    var marker = new google.maps.Marker({
-   //      position: {lat: 17.6883, lng: 83.2186},
-   //      map: map,
-   //      title: 'Hello World!',
-   //      icon: fireIcon
-   //    });
-   //    marker.addListener('click', function() {
-	  //   map.setCenter(marker.getPosition());
-	  //   infowindow.open(map, marker);
-	  // });
     }
 
   </script>
