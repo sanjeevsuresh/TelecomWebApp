@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-mongoose.connect('mongodb://localhost/disasters');
+mongoose.connect('mongodb://localhost/smartcities');
 
 var app = express();
 
@@ -26,12 +26,12 @@ app.set('view engine', 'jade');
 
 // Routes
 app.use('/api', require('./routes/api'));
-app.get('/disasters', function(req, res){
-  res.send('disasters here');
-});
-
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/map', function (req, res) {
+  res.sendFile(__dirname + '/map.html');
 });
 
 // uncomment after placing your favicon in /public
@@ -43,6 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use(express.static('public'));
 app.use('/users', users);
 
 // catch 404 and forward to error handler

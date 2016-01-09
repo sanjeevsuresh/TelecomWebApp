@@ -11,4 +11,3 @@ Disaster.register(router, '/disasters');
 
 // Return router
 module.exports = router;
-
